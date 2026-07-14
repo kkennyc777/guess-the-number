@@ -1,10 +1,11 @@
 import random
 #variables
-player_name
+player_name = ""
 secret_number
 player_guess
-attempts
-failed_attempts
+attempts = 10
+failed_attempts = 0
+game_won = False
 #Mostrar Bienvenida
 print ("Welcome to Guess the Number!")
 #Pedir Nombre
