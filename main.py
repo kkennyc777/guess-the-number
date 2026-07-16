@@ -22,6 +22,7 @@ while attempts > 0 and not game_won:
     #Preguntar el número del jugador
     try:
         player_guess = int(input ("Your number: "))
+    #Verify if the user enters text
     except ValueError:
         print("Please enter a valid number")
         time.sleep(0.5)
@@ -34,6 +35,7 @@ while attempts > 0 and not game_won:
             print("Remaining attempts: " + str(attempts))
             time.sleep(0.5)           
         continue
+    #Verify if the user enters a higher number than the specified range
     if player_guess > 100:
         print ("Please enter a valid number.")
         failed_attempts +=1
@@ -44,7 +46,7 @@ while attempts > 0 and not game_won:
             time.sleep(0.5)
             print("Remaining attempts: " + str(attempts))
             time.sleep(0.5)
-    #Dar Pista
+    #Give hint
     elif secret_number < player_guess:
         #Actualizar Intentos
         attempts -=1
@@ -53,7 +55,7 @@ while attempts > 0 and not game_won:
         time.sleep(0.5)
         print("Remaining attempts: " + str(attempts))
         time.sleep(0.5)
-    #Dar Pista
+    #Give hint
     elif secret_number > player_guess:
         #Actualizar Intentos
         attempts -=1
