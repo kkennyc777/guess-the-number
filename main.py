@@ -26,10 +26,12 @@ while attempts > 0 and not game_won:
             print ("You have loss an attempt, please input a correct number")
     elif secret_number < player_guess:
         attempts -=1
+        time.sleep(0.5)
         print ("Try a Lower number!")
         print("Remaining attempts: " + str(attempts))
     elif secret_number > player_guess:
         attempts -=1
+        time.sleep (0.5)
         print ("Try a Higher number!")
         print("Remaining attempts: " + str(attempts))
     elif secret_number == player_guess:
