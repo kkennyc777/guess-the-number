@@ -21,21 +21,20 @@ if Dificulty == "1":
     game_dificulty += 1
     secret_number = random.randrange(101)
     print ("Please choose a number between 0 and 100.")
-    print (secret_number)
 elif Dificulty == "2":
     game_dificulty += 2
     secret_number = random.randrange(501)
     print ("Please choose a number between 0 and 500.")
-    print (secret_number)
 elif Dificulty == "3":
     game_dificulty += 3
     secret_number = random.randrange(1001)
-    print(secret_number)
     print ("Please choose a number between 0 and 1000.")
 else:
     print ("Please enter a valid number.")
+if attempts == 0:
+    print("Game over.")
 #Loop
-time.sleep(1.5)
+time.sleep(0.1)
 while attempts > 0 and not game_won:
     #Ask for the player's number
     try:
@@ -51,10 +50,7 @@ while attempts > 0 and not game_won:
             print ("You have loss an attempt, please enter a valid number")
             time.sleep(0.5)
             print("Remaining attempts: " + str(attempts))
-            time.sleep(0.5)
-            if attempts == 0:
-                print("Game over.")
-                SystemExit           
+            time.sleep(0.5)      
         continue
     #Verify if the user enters a higher number than the specified range
     if game_dificulty == 1 and player_guess > 100:
@@ -72,40 +68,63 @@ while attempts > 0 and not game_won:
         failed_attempts +=1
         if failed_attempts == 3:
             attempts -=1
-            failed_attempts = 0
-            print ("You have loss an attempt, please enter a valid number")
-            time.sleep(0.5)
-            print("Remaining attempts: " + str(attempts))
-            time.sleep(0.5)
+            if attempts > 0:
+                failed_attempts = 0
+                print ("You have loss an attempt, please enter a valid number")
+                time.sleep(0.5)
+                print("Remaining attempts: " + str(attempts))
+                time.sleep(0.1)
+            else:
+                print("The secret number is: " + str(secret_number))
+                time.sleep(0.5)
+                print ("Game Over.")
+                SystemExit
     elif game_dificulty == 3 and player_guess > 1000:
         print ("Please enter a valid number.")
         failed_attempts +=1
         if failed_attempts == 3:
             attempts -=1
-            failed_attempts = 0
-            print ("You have loss an attempt, please enter a valid number")
-            time.sleep(0.5)
-            print("Remaining attempts: " + str(attempts))
-            time.sleep(0.5)
+            if attempts > 0:
+                failed_attempts = 0
+                print ("You have loss an attempt, please enter a valid number")
+                time.sleep(0.5)
+                print("Remaining attempts: " + str(attempts))
+                time.sleep(0.1)
+            else:
+                print("The secret number is: " + str(secret_number))
+                time.sleep(0.5)
+                print("Game Over.")
+                SystemExit
     #Give hint
     elif secret_number < player_guess:
         #Update attempts
         attempts -=1
         time.sleep(0.5)
-        print ("Try a Lower number!")
-        time.sleep(0.5)
-        print("Remaining attempts: " + str(attempts))
-        print(secret_number)
-        time.sleep(0.5)
+        if attempts > 0:
+            print ("Try a Lower number!")
+            time.sleep(0.5)
+            print("Remaining attempts: " + str(attempts))
+            time.sleep(0.1)
+        else:
+            print("The secret number is: " + str(secret_number))
+            time.sleep(0.5)
+            print("Game Over.")
+            SystemExit
     #Give hint
     elif secret_number > player_guess:
         #Update attempts
         attempts -=1
-        time.sleep (0.5)
-        print ("Try a Higher number!")
         time.sleep(0.5)
-        print("Remaining attempts: " + str(attempts))
-        print(secret_number)
+        if attempts > 0:
+            print ("Try a Higher number!")
+            time.sleep (0.5)
+            print("Remaining attempts: " + str(attempts))
+            time.sleep(0.1)
+        else:
+            print("The secret number is: " + str(secret_number))
+            time.sleep(0.5)
+            print("Game Over.")
+            SystemExit
         time.sleep(0.5)
     elif secret_number == player_guess:
         #Won?
